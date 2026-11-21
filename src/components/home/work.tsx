@@ -1,38 +1,54 @@
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { Headline } from "@/components/ui/headline";
-import { Reveal } from "@/components/ui/reveal";
-import { Section } from "@/components/ui/section";
 import { SECTION_IDS, WORK } from "@/data/home";
+
+import { WorkTrack } from "./work-track";
 
 /** Real clients and the kind of work — no invented results. */
 export const Work = () => (
-  <Section id={SECTION_IDS.work} label="Work">
-    <div className="flex flex-col items-start gap-8">
-      <Reveal>
-        <Eyebrow>{WORK.eyebrow}</Eyebrow>
-      </Reveal>
-      <Headline className="max-w-4xl text-headline">{WORK.title}</Headline>
-    </div>
-
-    <ul className="mt-16 border-t border-line">
+  <section id={SECTION_IDS.work} aria-label="Work" className="relative w-full">
+    <WorkTrack
+      count={WORK.items.length}
+      heading={
+        <div className="flex flex-col items-start gap-8">
+          <Eyebrow>{WORK.eyebrow}</Eyebrow>
+          <Headline className="max-w-4xl text-headline">{WORK.title}</Headline>
+        </div>
+      }
+    >
       {WORK.items.map((item, index) => (
-        <Reveal
+        <article
           key={item.client}
-          tag="li"
-          className="grid gap-2 border-b border-line py-8 md:grid-cols-[auto_1.2fr_1fr_0.8fr] md:items-baseline md:gap-8"
+          className="relative flex h-96 w-80 shrink-0 snap-start flex-col justify-between overflow-hidden rounded-card border border-glass-line bg-surface-raised p-8 md:w-96"
         >
-          <p className="text-sm tabular-nums text-muted">
-            {String(index + 1).padStart(2, "0")}
-          </p>
-          <h3 className="text-title font-semibold leading-snug tracking-tight">
-            {item.client}
-          </h3>
-          <p className="text-base text-muted">{item.scope}</p>
-          {"market" in item && item.market ? (
-            <p className="text-sm text-muted md:text-right">{item.market}</p>
-          ) : null}
-        </Reveal>
+          <div
+            aria-hidden
+            className="pointer-events-none absolute -right-1/4 -top-1/4 size-3/4 rounded-pill bg-accent-glow blur-3xl"
+          />
+          <div className="relative flex items-start justify-between gap-4">
+            <p className="text-sm tabular-nums text-muted">
+              {String(index + 1).padStart(2, "0")} / {String(WORK.items.length).padStart(2, "0")}
+            </p>
+            {"market" in item && item.market ? (
+              <p className="rounded-pill border border-glass-line px-4 py-1.5 text-sm text-muted">
+                {item.market}
+              </p>
+            ) : null}
+          </div>
+
+          <div className="relative">
+            <h3 className="text-title font-semibold leading-snug tracking-tight">{item.client}</h3>
+            <p className="mt-3 text-base text-muted">{item.scope}</p>
+            <ul className="mt-6 flex flex-wrap gap-2">
+              {item.tags.map((tag) => (
+                <li key={tag} className="rounded-pill bg-glass px-4 py-1.5 text-sm">
+                  {tag}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </article>
       ))}
-    </ul>
-  </Section>
+    </WorkTrack>
+  </section>
 );

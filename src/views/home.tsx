@@ -2,23 +2,31 @@ import { JsonLd } from "@/components/common/json-ld";
 import { RobotProvider, RobotView } from "@/components/common/robot-view";
 import { About } from "@/components/home/about";
 import { Contact } from "@/components/home/contact";
+import { Faq } from "@/components/home/faq";
 import { Hero } from "@/components/home/hero";
+import { Marquee } from "@/components/home/marquee";
+import { Process } from "@/components/home/process";
+import { Services } from "@/components/home/services";
 import { SiteFooter } from "@/components/home/site-footer";
 import { SiteHeader } from "@/components/home/site-header";
-import { Services } from "@/components/home/services";
 import { Statement } from "@/components/home/statement";
-import { Stream } from "@/components/home/stream";
 import { Work } from "@/components/home/work";
+import { LightStream } from "@/components/scene/light-stream";
+import { FAQ } from "@/data/home";
 import { siteConfig } from "@/lib/site";
 import {
+  getFaqStructuredData,
   getPersonStructuredData,
   jsonLdGraph,
 } from "@/utils/seo/structured-data";
 
 /**
- * Home view — a Server Component. Every section is a Server Component too;
- * the motion lives in client leaves (`Headline`, `Reveal`, `AuditWindow`,
- * `Stream`, `ContactForm`) so the HTML is complete before hydration.
+ * Home view — a Server Component. Every section is a Server Component or a
+ * thin client leaf, so the HTML is complete before hydration.
+ *
+ * The background is `LightStream`: a fixed WebGL scene (a stream of light the
+ * camera rides as you scroll). It loads three.js only when motion is on — the
+ * robot form and reduced motion get a still glow, never the download.
  *
  * `robot` is the robot form (obsidian/frontend/robot-form.md): `app/robot-view`
  * renders `<HomeView robot />` for crawlers and lab tools, routed there by the
@@ -37,8 +45,10 @@ export const HomeView = ({ robot = false }: { robot?: boolean }) => {
             jobTitle: "SEO Specialist",
             sameAs: siteConfig.organization.sameAs,
           }),
+          getFaqStructuredData("/", FAQ.items),
         )}
       />
+      <LightStream />
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:fixed focus:left-gutter focus:top-4 focus:z-[60] focus:rounded-pill focus:bg-accent focus:px-5 focus:py-2 focus:text-accent-foreground"
@@ -47,12 +57,14 @@ export const HomeView = ({ robot = false }: { robot?: boolean }) => {
       </a>
       <SiteHeader />
       <main id="main" className="relative w-full overflow-x-clip">
-        <Stream />
         <Hero />
+        <Marquee />
         <Statement />
         <About />
         <Services />
+        <Process />
         <Work />
+        <Faq />
         <Contact />
       </main>
       <SiteFooter />

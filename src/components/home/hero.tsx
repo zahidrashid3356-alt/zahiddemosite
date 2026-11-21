@@ -6,6 +6,7 @@ import { SectionLink } from "@/components/ui/section-link";
 import { HERO, SECTION_IDS } from "@/data/home";
 
 import { AuditWindow } from "./audit-window";
+import { ScrollCue } from "./scroll-cue";
 
 /**
  * First screen. The `<h1>` is the page's one title and carries the main query
@@ -55,5 +56,6 @@ export const Hero = () => (
 
       <AuditWindow />
     </div>
+    <ScrollCue />
   </section>
 );

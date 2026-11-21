@@ -16,6 +16,31 @@ For *why* the conventions are what they are, see [[decisions-log]].
 
 ---
 
+## 2026-11-21
+
+**Second pass: the page now moves with the scroll.**
+
+- Background: `components/scene/light-stream*` — a fixed three.js scene (one
+  `Points` draw call, ~16k particles on desktop, 6k on phones) whose camera
+  rides a curve down the page; colour runs accent, cyan, pink. Loaded lazily and
+  only when motion is on; the robot form and reduced motion get the still glow.
+  New dependency: `three` (+ `@types/three`). Colours come from `--stream-*` tokens.
+- Header: desktop mega menu on "Services" (`desktop-nav.tsx`, opens on hover,
+  focus and click) and a full-screen phone menu (`mobile-menu.tsx`, built to
+  `.claude/rules/menus.md`).
+- New sections: tools marquee, word-by-word statement, pinned "Process"
+  scroll-story, a sideways work track driven by page scroll, an FAQ accordion
+  (also emitted as `FAQPage` JSON-LD), a scroll cue in the hero.
+- Fix: `.scroll-layout` had no width, so inside the centred flex `body` it
+  shrink-wrapped its content; the marquee's `w-max` track made the page
+  thousands of px wide. It is `w-full` now.
+- Checked in a real-Chrome UA (not a bot UA — a headless UA is routed to the
+  robot form by the proxy and shows no motion): overflow 0 on desktop and
+  phone, canvas sized to the viewport, reduced motion does not hang, robot form
+  has every section's text and no canvas. Not measured: Lighthouse, scroll
+  frame times, a real phone, `yarn build` (Google Fonts unreachable in the
+  sandbox).
+
 ## 2026-11-18
 
 **First build: Zahid's SEO portfolio on `/`.** Relay-style structure (near-black

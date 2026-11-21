@@ -12,9 +12,12 @@ export const scrollSpeed = { current: 1 };
 export function ScrollLayout({ children }: { children: React.ReactNode }) {
   // Server-safe rendering
   return (
-    <div className="scroll-layout">
+    // `w-full`: `body` is a centred flex column, so without a width this box
+    // shrink-wraps its content — a wide child (the marquee's `w-max` track)
+    // made the whole page thousands of px wide.
+    <div className="scroll-layout w-full">
       {/* Static content that can be rendered on server */}
-      <div className="scroll-layout-content">{children}</div>
+      <div className="scroll-layout-content w-full">{children}</div>
 
       {/* Client-only functionality */}
       <ScrollController />

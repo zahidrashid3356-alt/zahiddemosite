@@ -16,8 +16,9 @@ export const Services = () => (
     <ul className="mt-16 grid gap-6 md:grid-cols-2">
       {SERVICES.items.map((service, index) => (
         <Reveal
-          key={service.title}
+          key={service.id}
           tag="li"
+          id={`service-${service.id}`}
           delayIn={(index % 2) * 120}
           className="rounded-card border border-glass-line bg-glass p-8 transition-colors duration-[var(--duration-fast)] ease-entrance hover:border-accent sm:p-10"
         >

@@ -33,6 +33,10 @@
   --raw-color-accent-300: #a99cff;
   --raw-color-accent-glow: rgb(139 123 255 / 0.35);
 
+  /* The 3D light stream blends accent → cyan → pink down the page. */
+  --raw-color-stream-cyan: #5fd4ff;
+  --raw-color-stream-pink: #ff7ad1;
+
   /* Glass and hairlines — white at low alpha over the dark ground. */
   --raw-color-glass-fill: rgb(255 255 255 / 0.05);
   --raw-color-glass-line: rgb(255 255 255 / 0.14);
@@ -93,6 +97,16 @@
   --accent-hover: var(--raw-color-accent-300);
   --accent-foreground: var(--raw-color-ink-950);
   --accent-glow: var(--raw-color-accent-glow);
+
+  /* Read by the WebGL scene through getComputedStyle — no literal in its code. */
+  --stream-ground: var(--background);
+  --stream-start: var(--accent);
+  --stream-middle: var(--raw-color-stream-cyan);
+  --stream-end: var(--raw-color-stream-pink);
+
+  /* Full-screen phone menu — its own roles (obsidian/frontend/mobile-menus.md). */
+  --menu-surface: var(--raw-color-ink-900);
+  --menu-foreground: var(--foreground);
 
   --display-size: var(--raw-text-display);
   --headline-size: var(--raw-text-headline);
@@ -162,6 +176,9 @@
   --color-accent-hover: var(--accent-hover);
   --color-accent-foreground: var(--accent-foreground);
   --color-accent-glow: var(--accent-glow);
+
+  --color-menu-surface: var(--menu-surface);
+  --color-menu-foreground: var(--menu-foreground);
 
   --color-consent-surface: var(--consent-surface);
   --color-consent-text: var(--consent-text);
