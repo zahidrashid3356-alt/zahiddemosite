@@ -67,8 +67,8 @@
   /* Layout rhythm. Phone gutter is 1rem — the starter's phone rule. */
   --raw-space-gutter: 4rem;
   --raw-space-gutter-phone: 1rem;
-  --raw-space-section: 10rem;
-  --raw-space-section-phone: 5rem;
+  --raw-space-section: 6rem;
+  --raw-space-section-phone: 3.5rem;
   --raw-size-page: 90rem;
 
   /* Focus ring. */
