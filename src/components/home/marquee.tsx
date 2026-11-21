@@ -49,8 +49,8 @@ const Row = ({ items, reverse }: { items: readonly string[]; reverse?: boolean }
 };
 
 export const Marquee = () => (
-  <section aria-label={MARQUEE.label} className="w-full overflow-hidden py-16">
-    <div className="flex flex-col gap-8">
+  <section aria-label={MARQUEE.label} className="w-full overflow-hidden py-8">
+    <div className="flex flex-col gap-4">
       {MARQUEE.rows.map((row, index) => (
         <Row key={row[0]} items={row} reverse={index % 2 === 1} />
       ))}

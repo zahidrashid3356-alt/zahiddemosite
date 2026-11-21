@@ -18,7 +18,7 @@ export const Hero = () => (
   <section
     id="top"
     aria-label="Introduction"
-    className="relative flex min-h-lvh w-full items-center px-gutter pb-section pt-32 sm:pt-40"
+    className="relative flex min-h-svh w-full items-center px-gutter pb-16 pt-28 sm:pt-32"
   >
     <div className="mx-auto grid w-full max-w-page items-center gap-16 lg:grid-cols-[1.15fr_0.85fr]">
       <div className="flex flex-col items-start">

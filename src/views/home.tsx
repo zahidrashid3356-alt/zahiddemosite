@@ -11,7 +11,7 @@ import { SiteFooter } from "@/components/home/site-footer";
 import { SiteHeader } from "@/components/home/site-header";
 import { Statement } from "@/components/home/statement";
 import { Work } from "@/components/home/work";
-import { LightStream } from "@/components/scene/light-stream";
+import { Aurora } from "@/components/scene/aurora";
 import { FAQ } from "@/data/home";
 import { siteConfig } from "@/lib/site";
 import {
@@ -24,7 +24,7 @@ import {
  * Home view — a Server Component. Every section is a Server Component or a
  * thin client leaf, so the HTML is complete before hydration.
  *
- * The background is `LightStream`: a fixed WebGL scene (a stream of light the
+ * The background is `Aurora`: a fixed WebGL scene (a soft colour field the
  * camera rides as you scroll). It loads three.js only when motion is on — the
  * robot form and reduced motion get a still glow, never the download.
  *
@@ -48,7 +48,7 @@ export const HomeView = ({ robot = false }: { robot?: boolean }) => {
           getFaqStructuredData("/", FAQ.items),
         )}
       />
-      <LightStream />
+      <Aurora />
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:fixed focus:left-gutter focus:top-4 focus:z-[60] focus:rounded-pill focus:bg-accent focus:px-5 focus:py-2 focus:text-accent-foreground"

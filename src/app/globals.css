@@ -11,9 +11,9 @@
    Grammar: --raw-<category>-<name>[-<shade>]
    See obsidian/frontend/design-system.md → "Token naming convention".
 
-   Look: Relay-style (getlayers.ai/layer/relay) — a near-black ground, glass
-   surfaces, one electric accent. The accent is violet, not Relay's lime, so the
-   site reads as its own brand. Change the accent here and nowhere else.
+   Look: a light, warm "paper" ground with deep-ink text and one indigo accent,
+   over a soft scroll-driven colour field. Every text/ground pair is >= 4.5:1
+   (muted on paper is ~6:1). Change the accent here and nowhere else.
    --------------------------------------------------------------------------- */
 :root {
   --raw-color-white: #ffffff;
@@ -21,33 +21,33 @@
   --raw-color-neutral-900: #171717;
   --raw-color-neutral-950: #0a0a0a;
 
-  /* Ground and surfaces — ink-950 is Relay's #060606 page colour. */
-  --raw-color-ink-950: #060606;
-  --raw-color-ink-900: #0d0d10;
-  --raw-color-ink-800: #15151b;
-  --raw-color-paper-50: #f5f5f7;
-  --raw-color-paper-400: #a3a3b0;
+  /* Ground and surfaces — warm paper, white cards, deep ink text. */
+  --raw-color-ink-950: #15131f;
+  --raw-color-paper-50: #f6f3ec;
+  --raw-color-paper-0: #ffffff;
+  --raw-color-ink-600: #55526a;
 
-  /* Accent — 400 is the fill, 300 the hover. Label on it is ink-950. */
-  --raw-color-accent-400: #8b7bff;
-  --raw-color-accent-300: #a99cff;
-  --raw-color-accent-glow: rgb(139 123 255 / 0.35);
+  /* Accent — 600 is the fill (white label, ~7:1), 700 the hover. */
+  --raw-color-accent-600: #4a35e0;
+  --raw-color-accent-700: #3a27c2;
+  --raw-color-accent-glow: rgb(74 53 224 / 0.16);
 
-  /* The 3D light stream blends accent → cyan → pink down the page. */
-  --raw-color-stream-cyan: #5fd4ff;
-  --raw-color-stream-pink: #ff7ad1;
+  /* The backdrop blends these three soft tints down the page. */
+  --raw-color-aurora-violet: #c4b9ff;
+  --raw-color-aurora-sky: #a9e4ff;
+  --raw-color-aurora-rose: #ffc6e3;
 
-  /* Glass and hairlines — white at low alpha over the dark ground. */
-  --raw-color-glass-fill: rgb(255 255 255 / 0.05);
-  --raw-color-glass-line: rgb(255 255 255 / 0.14);
-  --raw-color-line: rgb(255 255 255 / 0.1);
+  /* Glass and hairlines — white fill, ink at low alpha over the paper. */
+  --raw-color-glass-fill: rgb(255 255 255 / 0.62);
+  --raw-color-glass-line: rgb(21 19 31 / 0.14);
+  --raw-color-line: rgb(21 19 31 / 0.1);
 
   --raw-radius-sm: 0.5rem;
   --raw-radius-md: 0.75rem;
   --raw-radius-lg: 1.5rem;
   --raw-radius-pill: 62.5rem;
 
-  --raw-shadow-glow: 0 0 6rem rgb(139 123 255 / 0.28);
+  --raw-shadow-glow: 0 1.5rem 4rem rgb(74 53 224 / 0.16);
 
   --raw-duration-fast: 150ms;
   --raw-duration-normal: 250ms;
@@ -67,8 +67,8 @@
   /* Layout rhythm. Phone gutter is 1rem — the starter's phone rule. */
   --raw-space-gutter: 4rem;
   --raw-space-gutter-phone: 1rem;
-  --raw-space-section: 6rem;
-  --raw-space-section-phone: 3.5rem;
+  --raw-space-section: 4.5rem;
+  --raw-space-section-phone: 3rem;
   --raw-size-page: 90rem;
 
   /* Focus ring. */
@@ -84,28 +84,29 @@
    Grammar: --<role>[-<variant>][-<state>]
    --------------------------------------------------------------------------- */
 :root {
-  --background: var(--raw-color-ink-950);
-  --foreground: var(--raw-color-paper-50);
-  --muted: var(--raw-color-paper-400);
-  --surface: var(--raw-color-ink-900);
-  --surface-raised: var(--raw-color-ink-800);
+  --background: var(--raw-color-paper-50);
+  --foreground: var(--raw-color-ink-950);
+  --muted: var(--raw-color-ink-600);
+  --surface: var(--raw-color-paper-0);
+  --surface-raised: var(--raw-color-paper-0);
   --line: var(--raw-color-line);
   --glass: var(--raw-color-glass-fill);
   --glass-line: var(--raw-color-glass-line);
 
-  --accent: var(--raw-color-accent-400);
-  --accent-hover: var(--raw-color-accent-300);
-  --accent-foreground: var(--raw-color-ink-950);
+  --accent: var(--raw-color-accent-600);
+  --accent-hover: var(--raw-color-accent-700);
+  --accent-foreground: var(--raw-color-paper-0);
   --accent-glow: var(--raw-color-accent-glow);
 
   /* Read by the WebGL scene through getComputedStyle — no literal in its code. */
   --stream-ground: var(--background);
-  --stream-start: var(--accent);
-  --stream-middle: var(--raw-color-stream-cyan);
-  --stream-end: var(--raw-color-stream-pink);
+  --stream-start: var(--raw-color-aurora-violet);
+  --stream-middle: var(--raw-color-aurora-sky);
+  --stream-end: var(--raw-color-aurora-rose);
+  --stream-line: var(--foreground);
 
   /* Full-screen phone menu — its own roles (obsidian/frontend/mobile-menus.md). */
-  --menu-surface: var(--raw-color-ink-900);
+  --menu-surface: var(--raw-color-paper-0);
   --menu-foreground: var(--foreground);
 
   --display-size: var(--raw-text-display);
@@ -129,7 +130,7 @@
 
   /* Consent UI (cookie banner + preferences modal) — dressed in the site's
      own surface, accent and radii, per obsidian/frontend/components/common.md
-     → "Brand the consent UI". The site is dark-only, so these hold at every
+     → "Brand the consent UI". The site is light-only, so these hold at every
      colour scheme. */
   --consent-surface: var(--surface-raised);
   --consent-text: var(--foreground);
@@ -236,7 +237,7 @@ body {
      Keep in sync with src/components/common/grid/grid.config.ts. */
   html {
     font-size: 16px;
-    color-scheme: dark;
+    color-scheme: light;
   }
 
   @media (max-width: 1920px) {

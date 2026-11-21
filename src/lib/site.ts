@@ -90,9 +90,9 @@ export const siteConfig = {
   /** Author / creator / publisher — the brand, not the agency. */
   author: "Zahid",
   /** Browser theme-color (address bar / PWA) — the brand's ground. */
-  themeColor: "#060606",
+  themeColor: "#f6f3ec",
   /** The manifest and the PWA splash background. */
-  backgroundColor: "#060606",
+  backgroundColor: "#f6f3ec",
   locale: "en_US",
   /**
    * Facts about the organisation — the JSON-LD `Organization` node and the

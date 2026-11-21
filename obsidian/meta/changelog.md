@@ -16,6 +16,9 @@ For *why* the conventions are what they are, see [[decisions-log]].
 
 ---
 
+## 2026-11-21 (b)
+- Theme: dark -> light "paper" ground, ink text, indigo accent (tokens in `globals.css`). Background: `components/scene/aurora*` replaces `light-stream*` — one full-screen fragment shader (scroll-steered colour blobs + contour lines), no particles. Work section: pinned horizontal track removed, now a 2x2 grid. Section spacing tightened (`--raw-space-section` 4.5rem / 3rem phone), process pin shortened.
+
 ## 2026-11-21
 
 **Second pass: the page now moves with the scroll.**

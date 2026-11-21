@@ -77,7 +77,7 @@ export const Process = () => {
       >
         <div className="mx-auto w-full max-w-page">
           <Heading />
-          <ol className="mt-16 grid gap-6 md:grid-cols-2">
+          <ol className="mt-12 grid gap-6 md:grid-cols-2">
             {STEPS.map((step, index) => (
               <li
                 key={step.title}
@@ -100,7 +100,7 @@ export const Process = () => {
         end="bottom bottom"
         onChange={onChange}
         className="relative"
-        style={{ height: `${STEPS.length * 100}svh` }}
+        style={{ height: `${STEPS.length * 55 + 45}svh` }}
       >
         <div className="sticky top-0 flex h-svh items-center">
           <div className="mx-auto grid w-full max-w-page gap-10 lg:grid-cols-[0.75fr_1.25fr] lg:gap-24">

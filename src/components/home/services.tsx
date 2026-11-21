@@ -13,7 +13,7 @@ export const Services = () => (
       <Headline className="max-w-4xl text-headline">{SERVICES.title}</Headline>
     </div>
 
-    <ul className="mt-16 grid gap-6 md:grid-cols-2">
+    <ul className="mt-12 grid gap-6 md:grid-cols-2">
       {SERVICES.items.map((service, index) => (
         <Reveal
           key={service.id}

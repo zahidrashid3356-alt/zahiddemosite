@@ -15,7 +15,7 @@ import { keepSceneAlive, releaseContext, watchContext } from "@/lib/scene/webgl-
  * the brand colour) and never download three.js. The still also sits under the
  * canvas, so a lost context or a slow load shows the glow, not a black box.
  */
-export const LightStream = () => {
+export const Aurora = () => {
   const motionOff = useMotionOff();
   const boxRef = useRef<HTMLDivElement>(null);
 
@@ -26,8 +26,8 @@ export const LightStream = () => {
     return keepSceneAlive({
       container,
       build: async ({ settled, onContextChange }) => {
-        const { createLightStream } = await import("./light-stream-scene");
-        const scene = createLightStream(container, { settled });
+        const { createAurora } = await import("./aurora-scene");
+        const scene = createAurora(container, { settled });
         const stopWatching = watchContext(scene.canvas, onContextChange);
         return {
           isBroken: () => scene.gl.isContextLost(),
