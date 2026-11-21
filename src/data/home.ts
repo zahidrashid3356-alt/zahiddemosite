@@ -287,8 +287,8 @@ export const CONTACT = {
    * without them (it posts to /api/contact; set CONTACT_ENDPOINT to forward
    * leads to a CRM or webhook, or it is only logged server-side).
    */
-  email: "",
+  email: "zahidrashid300@gmail.com",
   /** Digits only, with the country code (`923001234567`) — builds a wa.me link. */
-  whatsappNumber: "",
+  whatsappNumber: "923356476679",
   linkedin: "https://www.linkedin.com/in/zahid-seo/",
 } as const;
